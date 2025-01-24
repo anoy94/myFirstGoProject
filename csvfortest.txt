@@ -1,0 +1,6 @@
+ID,Name,Sex,Class,Math,90
+1,John,Male,Class1,Math,95
+2,Jane,Female,Class2,eng,88
+3,Mark,Male,Class3,Math,78
+4,Lisa,Female,Class1,Math,88
+5,Tom,Male,Class2,Math,82
