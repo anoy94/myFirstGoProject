@@ -1,5 +1,3 @@
-
-pic.zip为运行截图，学生信息管理.apifox.json为用apifox打开的接口文档，csvfortest.txt为测试csv上传功能的示例文件，code.zip为源代码<br>
 代码采用RESFul规范<br>
 因为代码体量小所以全写在main.go里，没有分开<br>
 实现了学生信息和成绩的录入、删除、修改和查询功能以及从 CSV 文件中批量导入学生信息到系统的功能<br>
