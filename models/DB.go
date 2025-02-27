@@ -191,42 +191,42 @@ func InitMySQL(cfg *Config) (*gorm.DB, error) {
 	return db, nil
 }
 
-func (echoDB *DB) loadDataFromMySQL(id string) (*Student, error) {
-	// 从 MySQL 中加载数据
-	var student Student
-	if err := db.First(&student, "id = ?", id).Error; err != nil {
-		return nil, err
-	}
-	return &student, nil
-}
-
-func (echoDB *DB) loadDataFromCache(id string) (*Student, error) {
-	// 从 echoDB 中加载数据（内存缓存）
-	lock.RLock()
-	student, exists := echoDB.Students[id]
-	lock.RUnlock()
-	if !exists {
-		// 如果数据没有，进行懒加载
-		student, err := echoDB.loadDataFromMySQL(id)
-		if err != nil {
-			return nil, err
-		}
-		// 加载到 echoDB 中
-		echoDB.AddOrUpdateStudent(student)
-	}
-	return student, nil
-}
-
-func (echoDB *DB) PreloadHotData() {
-	// 假设从 MySQL 中加载一些热点数据到 echoDB
-	var students []Student
-	if err := db.Limit(100).Find(&students).Error; err != nil {
-		log.Println("预加载数据失败:", err)
-		return
-	}
-
-	// 将热点数据缓存到 echoDB
-	for _, student := range students {
-		echoDB.AddOrUpdateStudent(&student)
-	}
-}
+//func (echoDB *DB) loadDataFromMySQL(id string) (*Student, error) {
+//	// 从 MySQL 中加载数据
+//	var student Student
+//	if err := db.First(&student, "id = ?", id).Error; err != nil {
+//		return nil, err
+//	}
+//	return &student, nil
+//}
+//
+//func (echoDB *DB) loadDataFromCache(id string) (*Student, error) {
+//	// 从 echoDB 中加载数据（内存缓存）
+//	lock.RLock()
+//	student, exists := echoDB.Students[id]
+//	lock.RUnlock()
+//	if !exists {
+//		// 如果数据没有，进行懒加载
+//		student, err := echoDB.loadDataFromMySQL(id)
+//		if err != nil {
+//			return nil, err
+//		}
+//		// 加载到 echoDB 中
+//		echoDB.AddOrUpdateStudent(student)
+//	}
+//	return student, nil
+//}
+//
+//func (echoDB *DB) PreloadHotData() {
+//	// 假设从 MySQL 中加载一些热点数据到 echoDB
+//	var students []Student
+//	if err := db.Limit(100).Find(&students).Error; err != nil {
+//		log.Println("预加载数据失败:", err)
+//		return
+//	}
+//
+//	// 将热点数据缓存到 echoDB
+//	for _, student := range students {
+//		echoDB.AddOrUpdateStudent(&student)
+//	}
+//}

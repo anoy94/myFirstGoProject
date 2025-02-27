@@ -38,7 +38,7 @@ func main() {
 	}
 
 	// 加载热点数据到 echoDB 中
-	go echoDB.PreloadHotData()
+	//go echoDB.PreloadHotData()
 
 	r := gin.Default()
 
