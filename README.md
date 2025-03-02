@@ -15,5 +15,6 @@ SyncToPeers为具体实现<br>
 由于DB有map，gorm无法直接序列化和反序列化，故用JsonToStudent，ToSqlDB和ToDB来回转化为SqlDB，从而能够存入mysql<br>
 LoadDataFromCache方法先从内存数据库查找，没有则从mysql数据库查找<br>
 PreloadHotData实现启动时的缓存预热，只先加载一部分热点 key<br>
+图片为后面补上的数据库缓存的运行截图
 
 
