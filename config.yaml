@@ -1,16 +1,11 @@
-port: "8000"
-sync: "gossip"
-peers:
+http_ports:
   - "8080"
   - "8081"
   - "8082"
-  - "8083"
-  - "8084"
-  - "8085"
-  - "8086"
-  - "8087"
-  - "8088"
-  - "8089"
-  - "8090"
+raft_ports:
+  - "4000"
+  - "4001"
+  - "4002"
+sync: "gossip"
 newest_version: "v1"
-mysql_dsn: "root:123456@tcp(127.0.0.1:3306)/achedb?charset=utf8&parseTime=true&loc=Local"
+mysql_dsn: "root:123456@tcp(127.0.0.1:3306)/mysql?charset=utf8&parseTime=true&loc=Local"
